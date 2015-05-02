@@ -18,12 +18,7 @@ RUN wget $MIRROR/debian/dists/$DIST/main/installer-$ARCH/current/images/netboot/
 RUN wget $MIRROR/debian/dists/$DIST/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/pxelinux.0
 RUN mkdir pxelinux.cfg
 RUN printf "DEFAULT linux\nKERNEL linux\nAPPEND initrd=initrd.gz\n" >pxelinux.cfg/default
-CMD \
-    echo Setting up iptables... &&\
-    iptables -t nat -A POSTROUTING -j MASQUERADE &&\
-    echo Waiting for pipework to give us the eth1 interface... &&\
-    /pipework --wait &&\
-    echo Starting DHCP+TFTP server...&&\
+CMD echo Starting DHCP+TFTP server...&&\
     dnsmasq --interface=eth1 \
     	    --dhcp-range=192.168.242.2,192.168.242.99,255.255.255.0,1h \
 	    --dhcp-boot=pxelinux.0,pxeserver,192.168.242.1 \
