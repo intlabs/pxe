@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:14.04
 ENV ARCH amd64
 ENV DIST wheezy
 ENV MIRROR http://ftp.nl.debian.org
