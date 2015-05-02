@@ -1,10 +1,15 @@
 FROM ubuntu:14.04
+RUN apt-get update
+RUN apt-get -y install dnsmasq wget iptables
+RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework
+
+
+
 ENV ARCH amd64
 ENV DIST wheezy
 ENV MIRROR http://ftp.nl.debian.org
-RUN apt-get -q update
-RUN apt-get -qy install dnsmasq wget iptables
-RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework
+
+
 RUN chmod +x pipework
 RUN mkdir /tftp
 WORKDIR /tftp
