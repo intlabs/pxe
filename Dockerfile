@@ -1,4 +1,4 @@
-FROM stackbrew/debian:jessie
+FROM debian:jessie
 ENV ARCH amd64
 ENV DIST wheezy
 ENV MIRROR http://ftp.nl.debian.org
