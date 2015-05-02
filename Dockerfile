@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM debian:wheezy
 RUN apt-get update
 RUN apt-get -y install dnsmasq wget iptables
 RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework
